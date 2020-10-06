@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+
+<body>
+    <div id="errorMessage"></div>
+    <form method="POST" name="login" onsubmit="return validateForm();">
+        <fieldset>
+            <legend>Login</legend>
+        <input type = "text" name = "eml" placeholder = "you@domain.com">
+        <input type = "password" name = "password" placeholder = "xxxxxxxx">
+        <input type = "submit" name = "submit" value = "Login" />
+        </fieldset>
+   
+        <script>
+
+function validateForm(){
+
+    var email = document.login.eml.value;
+    var pass = document.login.password.value;
+    var checkat = email.indexOf("@");
+    var checkdot = email.lastIndexOf(".");
+    if(email == "" && pass == "")
+   {
+    document.getElementById("errorMessage").innerHTML = "Email and Password Required";  
+    document.login.eml.focus();
+    return false;
+   }
+   else if(email == ""){
+    document.getElementById("errorMessage").innerHTML = "Email is Required";  
+    document.login.eml.focus();
+    return false;
+   }
+   else if(pass == ""){
+    document.getElementById("errorMessage").innerHTML = "Password is Required";  
+    document.login.password.focus();
+    return false;
+   }
+   else if(checkat <= 2 && checkdot <=2 ) {
+    document.getElementById("errorMessage").innerHTML = "Email Not Valid";  
+    document.login.eml.focus();
+    return false;
+   }
+  else if(email == "aashma@gmail.com" && pass == "aashma123")
+  {
+    window.location.href = "\welcome.html";
+    return false;
+  }
+  else {
+
+    document.getElementById("errorMessage").innerHTML = "Username and Password Not Valid";  
+    document.login.eml.focus();
+    return false;
+  }
+return true;
+}
+
+</script>
+</form>
+</body>
+</html>

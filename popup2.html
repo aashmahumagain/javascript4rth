@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <button id="myBtn">Open Modal</button>
+
+    <!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Admission Open</p>
+      <img src= "images/A.jpeg" width="960px" alt="admission open" title="admission open"/>
+    </div>
+  
+  </div>
+
+</body>
+</html>
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span  =document.getElementsByClassName("close")[0];
+    document.body.onload = function(){
+        modal.style.display ="block";
+    }
+
+    btn.onclick = function(){
+        modal.style.display = "block";
+    }
+    span.onclick = function(){
+        modal.style.display = "none";
+    }
+    window.onclick = function(event){
+        if(event.target == modal){
+            modal.style.display="none";
+        }
+    }
+</script>

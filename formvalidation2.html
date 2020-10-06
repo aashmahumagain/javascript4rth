@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   
+    <div id="header">
+    <form id="login" onsubmit="return member()">
+        <p>
+            <label for="txtuser">User:</label>
+            <input type="text" class="text" name="txtuser" id="txtuser"/><br/>
+            <label for="txtpass">Password:</label> 
+            <input type="text" class="text" name="txtpass" id="txtpass"/><br/>
+            <input type="submit" class="buttons" id="btnlogin" name="btnlogin" value="Login"/>
+        </p>
+    </form>
+</div>
+</body>
+</html>
+<script>
+    function member() {
+        // Get the elements
+        var user_input = document.getElementById("txtuser");
+        var pass_input = document.getElementById("txtpass");
+    
+        // Get their values
+        var user_value = user_input.value;
+        var pass_value = pass_input.value;
+    
+        // Validate values, this is up to you
+        if ( /* this is your homework */ ) {
+            // Here values are OK, save a cookie with the username
+            saveTheCookie(user_value);
+            return true; // Form is OK
+        }
+        else {
+            // Form is wrong
+            return false;
+        }
+    }
+    function saveTheCookie(value) {
+        var today = new Date(); // Actual date
+        var expire = new Date(); // Expiration of the cookie
+    
+        var cookie_name = "username_form"; // Name for the cookie to be recognized
+        var number_of_days = 10; // Number of days for the cookie to be valid (10 in this case)
+    
+        expire.setTime( today.getTime() + 60 * 60 * 1000 * 24 * number_of_days ); // Current time + (60 sec * 60 min * 1000 milisecs * 24 hours * number_of_days)
+    
+        document.cookie = cookie_name + "=" + escape(value) + "; expires=" + expire.toGMTString();
+    }
+    function getTheCookie() {
+        var cookie_name = "username_form";
+        var return_value = null;
+    
+        var pos_start = document.cookie.indexOf(" " + cookie_name + "=");
+        if (pos_start == -1) document.cookie.indexOf(cookie_name + "=");
+    
+        if (pos_start != -1) { // Cookie already set, read it
+            pos_start++; // Start reading 1 character after
+            var pos_end = document.cookie.indexOf(";", pos_start); // Find ";" after the start position
+    
+            if (pos_end == -1) pos_end = document.cookie.length;
+            return_value = unescape( document.cookie.substring(pos_start, pos_end) );
+        }
+    
+        return return_value; // null if cookie doesn't exist, string otherwise
+    }
+</script>

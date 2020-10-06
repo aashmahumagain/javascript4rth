@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+    <style type="text/css">
+        body{
+            background:skyblue;
+            height: 180vh;
+            align-items: center;
+        }
+       
+    </style>
+</head>
+<body align="center">
+    <div class="controls">
+        <button onclick="start()">Start</button>
+        <button onclick="pause()">pause</button>
+        <button onclick="stop()">Stop</button>
+        <button onclick="restart()">Restart</button>
+    </div>
+    <div class="stopwatch">00:00:00</div>
+    <ul class="laps"></ul>
+    <script type="text/javascript">
+    var ms=0, s=0 ,m=0;
+    var timer;
+    var stopwatchA = document.querySelector('.stopwatch');
+   
+
+    function start(){
+        if(!timer){
+            timer = setInterval(run,10);
+        }
+       
+    }
+    function run(){
+        stopwatchA.textContent = (m<10 ? "0" +m:m)+":"+ (s<10?"0"+s:s)+":" +(ms<10?"0"+ms:ms);
+        ms++;
+        if (ms==100){
+            ms =0 ;
+            s++;
+        }
+        if(s==60){
+            s=0 ;
+            m++;
+        }
+    }
+    function pause(){
+        stopTimer();
+    }
+    function stop(){
+        stopTimer();
+        ms = 0;
+        s = 0;
+        m = 0;
+        stopwatchA.textContent = (m<10 ? "0" +m:m)+":"+ (s<10?"0"+s:s )+":" + (ms<10?"0"+ms:ms);
+    }
+    function stopTimer(){
+        clearInterval(timer);
+        timer = false;
+    }
+    function restart(){
+        stop();
+        start();
+        stopwatchA.textContent = (m<10 ? "0" +m:m)+":"+ (s<10?"0"+s:s )+":" + (ms<10?"0"+ms:ms);
+    }
+    </script>
+</body>
+</html>

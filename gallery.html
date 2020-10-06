@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	</title>
+	<style>
+		html{
+			background-color:lightgray;
+		}
+		*{
+			padding:0px;
+			margin:0px;
+			list-style:none;
+		}
+		.main{
+			display:block;
+			width:70%;
+			padding:10px;
+			background-color:white;
+			margin:auto;
+		}
+		.main img{
+			width:100%;
+			padding:5px;
+		}
+		.mysecond{
+			padding-top:20px;
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			margin:1%;
+		}
+		.mysecond li{
+			width:30%;
+			background-color:white;
+		}
+		.mysecond li img{
+			width:100%;
+		}
+	</style>
+</head>
+<body>
+<div class="main">
+	<img id="mainimage" src="images/A.jpeg">
+</div>
+<div>
+	<ul class="mysecond" >
+		<li><img onclick="show(this)" src="images/A.jpeg" id="img5"></li>
+		<li><img onclick="show(this)" src="images/b.png" id="img1"></li>
+		<li><img onclick="show(this)" src="images/c.jpg" id="img2"></li>
+		<li><img onclick="show(this)" src="images/d.jpg" id="img3"></li>
+		<li><img onclick="show(this)" src="images/e.jpg" id="img4"></li>
+		<li><img onclick="show(this)" src="images/f.png" id="img5"></li>
+
+		
+	</ul>
+</div>
+<script>
+	function show(images){
+		document.getElementById("mainimage").src=images.src;
+
+		
+
+	}
+</script>
+</body>
+</html>
